@@ -1,0 +1,228 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #0066eb 0%, #ff8ab3 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    width: 90%;
+    height: 90%;
+    border-radius: 7px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.leftBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    align-items: center;
+    border: 10px solid black;
+    width: 30%;
+    height: 85%;
+}
+
+.gradientViewer {
+    flex: 1;
+    background-color: grey;
+    width: 80%;
+    background: linear-gradient(to bottom, #0066eb 0%, #ff8ab3 100%);
+}
+
+.gradientToolbox {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.buttonGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+}
+
+.buttonGroup button{
+    width: 80px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+    margin: 5px;
+
+}
+
+.randomizeButton {
+    width: 80px;
+    border: 5px dotted black;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.randomizeButton img {
+    display: block;
+    width: 100%;
+}
+
+.rightBox {
+    width: 60%;
+    height: 85%;
+    background-color: white;
+    border: 10px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.gradientChanger {
+    width: 400px;
+    height: 50px;
+    background-color: grey;
+}
+
+.shadeOptions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.shadeChooser {
+    height: 200px;
+    width: 200px;
+    background-color: grey;
+}
+
+.rgbInputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.item {
+    display: flex;
+}
+
+.item h2 {
+    margin-right: 10px;
+}
+
+.footerOptions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.handles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+    flex: 1;
+}
+
+.rgbHandle {
+    width: 250px;
+    height: 50px;
+    background: linear-gradient(to right, red 0%, #ff0 17%, lime 33%, cyan 50%, blue 66%, #f0f 83%, red 100%);
+    border-radius: 4px;
+}
+
+.pointer {
+    left: 0%;
+    position: relative;
+    z-index: 2;
+}
+
+.shape {
+    position: absolute;
+    width: 12px;
+    margin-left: -6px;
+    margin-top: -6px;
+    height: 62px;
+    border: 3px solid black;
+    border-radius: 6px;
+    /* animation: myanim 10s infinite; */
+}
+
+.shape:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -1px;
+    width: 3px;
+    height: 52px;
+    border: 2px solid whitesmoke;
+    border-radius: 2px;
+}
+
+/* @keyframes myanim {
+    0% {
+        left: 0%;
+    }
+
+    100% {
+        left: 100%;
+    }
+} */
+
+.alphaHandle {
+    width: 250px;
+    height: 50px;
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),linear-gradient(-45deg, #ccc 25%, transparent 25%),linear-gradient(45deg, transparent 75%, #ccc 75%),linear-gradient(-45deg, transparent 75%, #ccc 75%);
+}
+
+.insideAlpha {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgb(97, 180, 86) 0%, rgba(97, 180, 86, 0) 100%);
+    border-radius: 4px;
+}
+
+.codes {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 120px;
+}
+
+.hexCode {
+    width: 150px;
+    height: 50px;
+    text-align: center;
+}
+
+.getCss {
+    height: 50px;
+    width: 150px;
+    border-radius: 3px;
+    color: white;
+    background-color: black;
+}
+

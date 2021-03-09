@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Gradient Maker</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="leftBox">
+            <div class="gradientViewer">
+
+            </div>
+            <div class="gradientToolbox">
+                <div class="buttonGroup">
+                    <button>Radial</button>
+                    <button>Linear</button>
+                </div>
+                <div class="randomizeButton">
+                    <img src="./design/Property 1=Default.svg">
+                </div>
+            </div>
+        </div>
+        <div class="rightBox">
+            <div class="gradientChanger">
+
+            </div>
+            <div class="shadeOptions">
+                <div class="shadeChooser">
+
+                </div>
+                <div class="rgbInputs">
+                    <div class="item">
+                        <h2 class="colourChannel">R:</h2>
+                        <input type="text">
+                    </div>
+                    <div class="item">
+                        <h2 class="colourChannel">G:</h2>
+                        <input type="text">
+                    </div>
+                    <div class="item">
+                        <h2 class="colourChannel">B:</h2>
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="footerOptions">
+                <div class="handles">
+                    <div class="rgbHandle">
+                        <div class="pointer" id="rgbPointer">
+                            <div class="shape"></div>
+                        </div>
+                    </div>
+                    <div class="alphaHandle">
+                        <div class="pointer" id="alphaPointer">
+                            <div class="shape"></div>
+                        </div>
+                        <div class="insideAlpha"></div>
+                    </div>
+                </div>
+                <div class="codes">
+                    <input class="hexCode" placeholder="Hex Code">
+                    <button class="getCss">Get CSS</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
