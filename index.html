@@ -31,35 +31,42 @@
             </div>
             <div class="shadeOptions">
                 <div class="shadeChooser">
+                    <div class="mainChoose" style="background: rgb(0,0,0);">
 
+                    </div>
                 </div>
                 <div class="rgbInputs">
                     <div class="item">
                         <h2 class="colourChannel">R:</h2>
-                        <input type="text">
+                        <input type="text" id="rInput">
                     </div>
                     <div class="item">
                         <h2 class="colourChannel">G:</h2>
-                        <input type="text">
+                        <input type="text" id="gInput">
                     </div>
                     <div class="item">
                         <h2 class="colourChannel">B:</h2>
-                        <input type="text">
+                        <input type="text" id="bInput">
                     </div>
                 </div>
             </div>
             <div class="footerOptions">
                 <div class="handles">
-                    <div class="rgbHandle">
-                        <div class="pointer" id="rgbPointer">
-                            <div class="shape"></div>
-                        </div>
+                    <div class="sliders">
+                        <label>R: </label>
+                        <span>0 <input class="rgbSlider" type="range" min="0" max="255" id="r" step="1" value="0"> 255</span>
                     </div>
-                    <div class="alphaHandle">
-                        <div class="pointer" id="alphaPointer">
-                            <div class="shape"></div>
-                        </div>
-                        <div class="insideAlpha"></div>
+                    <div class="sliders">
+                        <label>G: </label>
+                        <span>0 <input class="rgbSlider" type="range" min="0" max="255" id="g" step="1" value="0"> 255</span>
+                    </div>
+                    <div class="sliders">
+                        <label>B: </label>
+                        <span>0 <input class="rgbSlider" type="range" min="0" max="255" id="b" step="1" value="0"> 255</span>
+                    </div>
+                    <div class="sliders">
+                        <label>A: </label>
+                        <span>0 <input class="rgbSlider" type="range" min="0" max="1" id="alpha" step="0.01" value="0"> 1.00</span>
                     </div>
                 </div>
                 <div class="codes">
@@ -70,6 +77,7 @@
         </div>
     </div>
 
+    <script src="./jquery-3.6.0.slim.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>

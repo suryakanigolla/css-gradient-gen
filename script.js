@@ -1,45 +1,36 @@
-var rgbPointer = document.querySelector("#rgbPointer");
-var rgbHandle = document.querySelector(".rgbHandle");
+var rSlider = document.querySelector("#r");
+var gSlider = document.querySelector("#g");
+var bSlider = document.querySelector("#b");
 
-var alphaPointer = document.querySelector("#alphaPointer");
-var alphaHandle = document.querySelector(".alphaHandle");
+var rInput = document.querySelector('#rInput');
+var gInput = document.querySelector('#gInput');
+var bInput = document.querySelector('#bInput');
 
-var active = false;
-var currentLeft;
-var initialLeft;
-var leftOffset = 0;
+var mainChoose = document.querySelector('.mainChoose');
 
-rgbHandle.addEventListener("mousedown", dragStart, false);
-rgbHandle.addEventListener("mouseup", dragEnd, false);
-rgbHandle.addEventListener("mousemove", drag, false);
 
-function dragStart(e) {
-    initialLeft = e.target.style.left - leftOffset;
-    if (e.target == rgbPointer) {
-        active = true; 
-    }
-    console.log(e.target)
-}
+$(document).ready(function() {
+    $(rInput).val(0);
+    $(gInput).val(0);
+    $(bInput).val(0);
+})
 
-function dragEnd(e) {
-    initialLeft = currentLeft;
-    active = false;
-    console.log(currentLeft)
-}
+$(rSlider).on('input', function() {
+    $(rInput).val($(this).val());
+})
 
-function drag(e) {
-    if (active) {
-        e.preventDefault();
-        currentLeft = e.target.style.left - initialLeft;
-        leftOffset = currentLeft
-        setLeft(currentLeft, rgbPointer);
-    }
-}
+$(gSlider).on('input', function() {
+    $(gInput).val($(this).val());
+})
 
-function setLeft(leftCurrent, el) {
-    el.style.left += leftCurrent;
-}
+$(bSlider).on('input', function() {
+    $(bInput).val($(this).val());
+})
 
-function findHandle(e) {
-    return document.querySelector
-}
+$(rInput, gInput, bInput).change(function() {
+    rValue = String($(rInput).val());
+    gValue = String($(gInput).val());
+    bValue = String($(bInput).val());
+    var tempString = `rgb(${rValue},${gValue},${bValue})`
+    console.log(tempString)
+})
