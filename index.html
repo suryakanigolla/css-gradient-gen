@@ -31,22 +31,23 @@
             </div>
             <div class="shadeOptions">
                 <div class="shadeChooser">
-                    <div class="mainChoose" style="background: rgb(0,0,0);">
-
-                    </div>
+                    <canvas class="mainChoose" style="background: rgb(0,0,0);">
+                        <!-- <div class="bg bg1"></div>
+                        <div class="bg bg2"></div> -->
+                    </canvas>
                 </div>
                 <div class="rgbInputs">
                     <div class="item">
                         <h2 class="colourChannel">R:</h2>
-                        <input type="text" id="rInput">
+                        <input type="text" id="rInput" class="rgbInput" value="0">
                     </div>
                     <div class="item">
                         <h2 class="colourChannel">G:</h2>
-                        <input type="text" id="gInput">
+                        <input type="text" id="gInput" class="rgbInput" value="0">
                     </div>
                     <div class="item">
                         <h2 class="colourChannel">B:</h2>
-                        <input type="text" id="bInput">
+                        <input type="text" id="bInput" class="rgbInput" value="0">
                     </div>
                 </div>
             </div>
@@ -70,7 +71,7 @@
                     </div>
                 </div>
                 <div class="codes">
-                    <input class="hexCode" placeholder="Hex Code">
+                    <input class="hexCode" placeholder="Hex Code" maxlength="7">
                     <button class="getCss">Get CSS</button>
                 </div>
             </div>
@@ -78,6 +79,6 @@
     </div>
 
     <script src="./jquery-3.6.0.slim.js"></script>
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
 </body>
 </html>

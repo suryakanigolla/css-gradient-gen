@@ -90,11 +90,43 @@ body {
     justify-content: space-evenly;
 }
 
-.gradientChanger {
-    width: 400px;
+.gradientChangerContainer {
+    width: 80%;
     height: 50px;
-    background-color: grey;
+    
 }
+
+.gradientChanger {
+    width: 80%;
+    height: 50px;
+    position: relative;
+    background-color: grey;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+/* Gradient Pointer Styles */
+
+.gradientPointer {
+    width: 12px;
+    height: 130%;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    border-radius: 7px;
+    border: 1px solid black;
+    top: -8px;
+    position: absolute;
+    z-index: 10;
+}
+
+.selected {
+    border: 3px solid black;
+}
+
+
+
+/* Gradient Pointer Styles END */
+
 
 .shadeOptions {
     display: flex;
@@ -104,14 +136,35 @@ body {
 }
 
 .shadeChooser {
-    height: 200px;
-    width: 200px;
-    background-color: grey;
+    height: 250px;
+    width: 250px;
+    border-radius: 6px;
+    border: 1px solid black;
 }
 
 .mainChoose {
+    background-color: grey;
     width: 100%;
     height: 100%;
+    border-radius: 6px;
+    position: relative;
+}
+
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+
+.bg1 {
+    background: linear-gradient(to right, rgb(255, 255, 255) 0%, rgba(255,255,255,0) 100%);
+    z-index: 10;
+}
+
+.bg2 {
+    background: linear-gradient(to bottom, transparent 0%, #000 100%);
+    z-index: 20;
 }
 
 .rgbInputs {
