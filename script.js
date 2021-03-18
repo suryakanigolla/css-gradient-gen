@@ -19,6 +19,8 @@ var isClicked = false;
 var picker = new ColorPicker(mainChoose,250,250);
 var gradientChanger = new GradientChanger([])
 
+var lgTemp;
+
 setInterval(() => picker.draw(),1);
 
 $(document).ready(function() {
@@ -30,7 +32,7 @@ $(document).ready(function() {
     });
     
     $(mainChoose).mousemove(function(e) {
-        if(isClicked) {
+        if(isClicked && this==e.target) {
             var pos = findPos(this);
             var x = e.pageX - pos.x;
             var y = e.pageY - pos.y;
@@ -87,7 +89,7 @@ $(document).ready(function() {
 
 
     $(".gradientPointer").each(function(index) {
-        $(this).on("mousedown", function() {
+        $(this).on("mousedown", function(e) {
             $(".gradientPointer").removeClass("selected");
             $(this).addClass("selected");
         })
@@ -99,25 +101,59 @@ $(document).ready(function() {
                 updateGradient();
             }
         });
-
     })
 
-    $()
+    $(".gradientChanger").on("click",function(e) {
+        if(this == e.target) {
+            var getPosTemp = e.pageX - $(this).offset().left;
+            console.log(getPosTemp);
+            var returnID = gradientChanger.addPointer($(hexCode).val(),String(getPosTemp)+"px");
+            $(".gradientPointer").removeClass("selected");
+            $("#"+returnID).addClass("selected");
+            $("#"+returnID).draggable({
+                axis:"x",
+                containment:".gradientChanger",
+                drag: function() {
+                    gradientChanger.movePointer($(this).attr("id"),$(this).css("left"));
+                    updateGradient();
+                }
+            });
+            $("#"+returnID).on("mousedown", function(e) {
+                $(".gradientPointer").removeClass("selected");
+                $(this).addClass("selected");
+            })
+            updateGradient();
+        }
+        
+    })
+
+    //SideBar
+    $(".toggle-btn").click(function(){
+        $("#sidebar").toggleClass("active");
+    })
+    
 
 })
 
 //Main function
 function start() {
-    addAPointer("#FFFFFF", "10%");
-    addAPointer("#000000", "30%");
+    addAPointer("#FFFFFF", "10px");
+    addAPointer("#000000", "320px");
+    $(hexCode).val("#000000")
     updateGradient();
 }
 
 //Update Function
 function updateGradient() {
+    
     $(".gradientChanger").css("background", function() {
-        return gradientChanger.generateGradient();
+        lgTemp = gradientChanger.generateGradient($(this).width());
+        return lgTemp;
     });
+
+    $(".gradientViewer").css("background",lgTemp);
+
+    
 }
 
 function updateAll(r,g,b) {

@@ -10,9 +10,9 @@ export class GradientChanger {
         return (this.pointers.filter(item => item.pos == pointer.pos)).length == 0 ? false : true;
     }
 
-    checkBorder(pointer) {
-        return parseFloat(pointer.pos) < 101 ? true : false; 
-    }
+    // checkBorder(pointer) {
+    //     return parseFloat(pointer.pos) < 101 ? true : false; 
+    // }
 
     addPointer(colour,pos) {
         var tempId = `pointer${this.currentId}`;
@@ -23,14 +23,16 @@ export class GradientChanger {
         else {
             tempPointer =  new Pointer(colour,pos, tempId, false);
         }
-        if (!this.checkOverlapping(tempPointer) && this.checkBorder(tempPointer)) {
+        if (!this.checkOverlapping(tempPointer)) {
             this.pointers.push(tempPointer);
+            this.pointers.sort(function(a,b) { return parseFloat(a.getPos()) - parseFloat(b.getPos()) });
             this.currentId += 1;
             $(".gradientChanger").append(tempPointer.getHTML());
         }
         else {
             console.log("overlapping");
         }
+        return tempId;
         
     }
 
@@ -66,12 +68,14 @@ export class GradientChanger {
     //     return divNew;
     // }
 
-    generateGradient() {
+    generateGradient(width) {
         var tempStr = "linear-gradient(90deg,";
+        var tempVal;
         for (var i = 0; i < this.pointers.length; i++) {
             tempStr += this.pointers[i].getColor();
             tempStr += " ";
-            tempStr += this.pointers[i].getPos();
+            tempVal = (parseFloat($("#"+this.pointers[i].getId()).css("left"))/width)*100;
+            tempStr += String(tempVal) + "%";
             if(i != this.pointers.length - 1) {
                 tempStr += ",";
             }

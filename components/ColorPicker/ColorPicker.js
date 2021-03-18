@@ -15,6 +15,7 @@ export class ColorPicker {
     }
 
     build() {
+        this.context.imageSmoothingEnabled = false;
         this.context.fillStyle = this.backgroundColor;
         this.context.fillRect(0,0,this.target.width,this.target.height);
         var gradient = this.context.createLinearGradient(0,0,this.target.width,this.target.height);
@@ -24,7 +25,7 @@ export class ColorPicker {
         this.context.fillRect(0,0,this.target.width,this.target.height);
         gradient = this.context.createLinearGradient(0,0,0,this.target.height);
         gradient.addColorStop(0, 'rgba(0,0,0,0)');
-        gradient.addColorStop(1,  '#000');    
+        gradient.addColorStop(1,  '#000');
         this.context.fillStyle = gradient; 
         this.context.fillRect(0,0,this.target.width,this.target.height);  
 
