@@ -50,6 +50,16 @@ export class GradientChanger {
         return this.pointers;
     }
 
+    movePointer(id,newPos) {
+        var pointerTemp = this.pointers.filter(item => item.id == id);
+        pointerTemp[0].updatePos(newPos);
+    }
+
+    updateColor(id,newColor) {
+        var pointerTemp = this.pointers.filter(item => item.id == id);
+        pointerTemp[0].updateColor(newColor); 
+    }
+
     // toHTML() {
     //     var divNew = document.createElement("div");
     //     divNew.className = "gradientChanger";

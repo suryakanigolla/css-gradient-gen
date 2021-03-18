@@ -38,6 +38,8 @@ $(document).ready(function() {
             var p = c.getImageData(x, y, 1, 1).data; 
             var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
             updateAll(p[0],p[1],p[2]);
+            gradientChanger.updateColor($(".selected").attr("id"),hex);
+            updateGradient();
         }
     })
     
@@ -85,10 +87,22 @@ $(document).ready(function() {
 
 
     $(".gradientPointer").each(function(index) {
-        $(this).on("click", function() {
-            console.log($(this).attr("id"));
-        } )
+        $(this).on("mousedown", function() {
+            $(".gradientPointer").removeClass("selected");
+            $(this).addClass("selected");
+        })
+        $(this).draggable({
+            axis:"x",
+            containment:".gradientChanger",
+            drag: function() {
+                gradientChanger.movePointer($(this).attr("id"),$(this).css("left"));
+                updateGradient();
+            }
+        });
+
     })
+
+    $()
 
 })
 
