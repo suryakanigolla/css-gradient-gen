@@ -17,6 +17,8 @@ var sidebarList = document.querySelector("#sidebar .list");
 
 var isHexCode = false;
 var isClicked = false;
+var wasSideBarOpen = false;
+var isLinear = true;
 
 var picker = new ColorPicker(mainChoose,250,250);
 var gradientChanger = new GradientChanger([])
@@ -53,6 +55,25 @@ $(document).ready(function() {
 
     $(mainChoose).mouseleave(function(e) {
         isClicked = false;
+    })
+
+    //Radial and Linear Buttons
+    $("#radialButton").click(function() {
+        if (isLinear) {
+            isLinear = false;
+            $("#linearButton").removeClass("selectedButton");
+            $(this).toggleClass("selectedButton");
+            updateGradient();
+        }
+    })
+
+    $("#linearButton").click(function() {
+        if (!isLinear) {
+            isLinear = true;
+            $("#radialButton").removeClass("selectedButton");
+            $(this).toggleClass("selectedButton");
+            updateGradient();
+        }
     })
 
     //Inputs Sliders HexCode
@@ -135,6 +156,16 @@ $(document).ready(function() {
     $(".toggle-btn").click(function(){
         $("#sidebar").toggleClass("active");
         updateSideBar();
+        if(!wasSideBarOpen) {
+            $(".toggle-btn-inner").css("display","none");
+            $(".crossSidebar").css("display","block");
+            wasSideBarOpen = true;
+        }
+        else {
+            $(".toggle-btn-inner").css("display","block");
+            $(".crossSidebar").css("display","none");
+            wasSideBarOpen = false;
+        }
     })
 
     $(sidebarList).on("click",".itemDelete",function() {
@@ -160,8 +191,18 @@ function start() {
 function updateGradient() {
     
     $(".gradientChanger").css("background", function() {
-        lgTemp = gradientChanger.generateGradient($(this).width());
-        return lgTemp;
+        // lgTemp = gradientChanger.generateGradient($(this).width());
+        // if(isLinear) {
+        //     return "linear-gradient(90deg," + lgTemp + ")";
+        // }
+        if(isLinear) {
+            lgTemp = "linear-gradient(90deg,"+gradientChanger.generateGradient($(this).width()) + ")";
+            return lgTemp;
+        }
+        else {
+            lgTemp = "radial-gradient(circle,"+gradientChanger.generateGradient($(this).width()) + ")";
+            return "linear-gradient(90deg,"+gradientChanger.generateGradient($(this).width()) + ")";
+        }
     });
 
     $(".gradientViewer").css("background",lgTemp);   

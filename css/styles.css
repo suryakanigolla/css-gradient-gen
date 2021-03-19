@@ -67,7 +67,10 @@ body {
     color: white;
     border-radius: 3px;
     margin: 5px;
+}
 
+.buttonGroup button.selectedButton{
+    background: chocolate;
 }
 
 .randomizeButton {
@@ -287,24 +290,31 @@ body {
 
 #sidebar .toggle-btn {
     position:absolute;
-    left:320px;
+    left:300px;
     top:10px;
+    width: 130px;
+    height: 40px;
+    background: white;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
-#sidebar .toggle-btn span {
+
+#sidebar .toggle-btn img {
+    display: block;
+    width: 25%;
+}
+/* #sidebar .toggle-btn span {
     display:block;
     width:30px;
     height:5px;
     background:#151719;
     margin:5px 0px;
     cursor:pointer;
-}
-  /* #sidebar div.list div.item {
-    padding:15px 10px;
-    border-bottom:1px solid #444;
-    color:#fcfcfc;
-    text-transform:uppercase;
-    font-size:15px;
-  } */
+} */
 
   /* SideBar Item Styles */
 

@@ -33,7 +33,6 @@ export class GradientChanger {
 
     deletePointer(pointerID) {
         if(this.pointers.length > 2) {
-            console.log(pointerID)
             $("#"+pointerID).remove();
             this.pointers = this.pointers.filter(item => item.id != pointerID);
         }
@@ -54,7 +53,9 @@ export class GradientChanger {
 
     updateColor(id,newColor) {
         var pointerTemp = this.pointers.filter(item => item.id == id);
-        pointerTemp[0].updateColor(newColor); 
+        if(pointerTemp.length != 0) {
+            pointerTemp[0].updateColorPointer(newColor); 
+        }
     }
 
     // toHTML() {
@@ -64,7 +65,8 @@ export class GradientChanger {
     // }
 
     generateGradient(width) {
-        var tempStr = "linear-gradient(90deg,";
+        // var tempStr = "linear-gradient(90deg,";
+        var tempStr = "";
         var tempVal;
         for (var i = 0; i < this.pointers.length; i++) {
             tempStr += this.pointers[i].getColor();
@@ -75,7 +77,7 @@ export class GradientChanger {
                 tempStr += ",";
             }
         }
-        tempStr += ")";
+        // tempStr += ")";
         return tempStr;
     }
 }

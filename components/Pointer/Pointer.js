@@ -5,7 +5,7 @@ export class Pointer {
         this.id = id;
     }
 
-    updateColor(newColor) {
+    updateColorPointer(newColor) {
         this.colour = newColor;
     }
 
