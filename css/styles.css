@@ -5,12 +5,18 @@
     font-family: 'Kumbh Sans', sans-serif;
 }
 
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
 body {
     background: #14213D;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 .container {
@@ -366,3 +372,11 @@ body {
       color: white;
       height: 30px;
   }
+
+  /* Media Queries */
+  @media screen and (max-height: 700px) {
+    .shadeChooser {
+        height: 200px;
+        width: 200px;
+    }
+}

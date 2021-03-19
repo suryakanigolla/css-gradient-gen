@@ -2,6 +2,7 @@ import {ColorPicker} from "./components/ColorPicker/ColorPicker.js";
 import {GradientChanger} from "./components/GradientChanger/GradientChanger.js";
 // import {Pointer} from "./components/Pointer/Pointer.js";
 
+
 var rSlider = document.querySelector("#r");
 var gSlider = document.querySelector("#g");
 var bSlider = document.querySelector("#b");
@@ -14,6 +15,7 @@ var mainChoose = document.querySelector('.mainChoose');
 var hexCode = document.querySelector('.hexCode');
 
 var sidebarList = document.querySelector("#sidebar .list");
+var cssP = document.querySelector("#modal-2-content p");
 
 var isHexCode = false;
 var isClicked = false;
@@ -175,16 +177,23 @@ $(document).ready(function() {
         updateGradient();
         updateSideBar();
     })
+
+    //Get CSS
+    $(".getCss").click(function(e) {
+        $(cssP).text(lgTemp)
+    })
     
 
 });
 
 //Main function
 function start() {
+    window.MicroModal.init();
     addAPointer("#FFFFFF", "2px");
     addAPointer("#000000", "320px");
     $(hexCode).val("#000000")
     updateGradient();
+    $(cssP).text(lgTemp)
 }
 
 //Update Function
