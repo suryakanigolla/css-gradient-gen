@@ -182,6 +182,10 @@ $(document).ready(function() {
     $(".getCss").click(function(e) {
         $(cssP).text(lgTemp)
     })
+
+    $(".helpButton").click(function(e) {
+        window.MicroModal.show("modal-1");
+    })
     
 
 });
