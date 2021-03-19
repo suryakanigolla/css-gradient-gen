@@ -1,9 +1,8 @@
 export class Pointer {
-    constructor(colour,pos,id, isSelected) {
+    constructor(colour,pos,id) {
         this.colour = colour;
         this.pos = pos;
         this.id = id;
-        this.isSelected = isSelected;
     }
 
     updateColor(newColor) {
@@ -27,7 +26,7 @@ export class Pointer {
     }
 
     getHTML() {
-        if(this.isSelected) {
+        if(this.id == "pointer0") {
             return `<div class='gradientPointer selected' style='left: ${this.pos};' id='${this.id}'></div>`
         }
         else {

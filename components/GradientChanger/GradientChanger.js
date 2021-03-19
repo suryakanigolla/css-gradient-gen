@@ -17,12 +17,7 @@ export class GradientChanger {
     addPointer(colour,pos) {
         var tempId = `pointer${this.currentId}`;
         var tempPointer;
-        if(this.currentId == 0) {
-            tempPointer =  new Pointer(colour,pos, tempId, true);
-        }
-        else {
-            tempPointer =  new Pointer(colour,pos, tempId, false);
-        }
+        tempPointer =  new Pointer(colour,pos, tempId);
         if (!this.checkOverlapping(tempPointer)) {
             this.pointers.push(tempPointer);
             this.pointers.sort(function(a,b) { return parseFloat(a.getPos()) - parseFloat(b.getPos()) });
@@ -36,12 +31,12 @@ export class GradientChanger {
         
     }
 
-    deletePointer(pointer) {
+    deletePointer(pointerID) {
         if(this.pointers.length > 2) {
-            $(pointer.getId()).remove();
-            this.pointers = this.pointers.filter(item => item != pointer);
+            console.log(pointerID)
+            $("#"+pointerID).remove();
+            this.pointers = this.pointers.filter(item => item.id != pointerID);
         }
-
     }
 
     getPointer(id) {

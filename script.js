@@ -13,6 +13,8 @@ var bInput = document.querySelector('#bInput');
 var mainChoose = document.querySelector('.mainChoose');
 var hexCode = document.querySelector('.hexCode');
 
+var sidebarList = document.querySelector("#sidebar .list");
+
 var isHexCode = false;
 var isClicked = false;
 
@@ -49,6 +51,10 @@ $(document).ready(function() {
         isClicked = false;
     })
 
+    $(mainChoose).mouseleave(function(e) {
+        isClicked = false;
+    })
+
     //Inputs Sliders HexCode
     $(hexCode).mousedown(function() {
         if(!isHexCode) {
@@ -63,7 +69,6 @@ $(document).ready(function() {
         $(gInput).val(rgbComp.g);
         $(bInput).val(rgbComp.b);
         updateMainChoose();
-    
     })
 
     $(rSlider).on('input', function() {
@@ -106,8 +111,7 @@ $(document).ready(function() {
     $(".gradientChanger").on("click",function(e) {
         if(this == e.target) {
             var getPosTemp = e.pageX - $(this).offset().left;
-            console.log(getPosTemp);
-            var returnID = gradientChanger.addPointer($(hexCode).val(),String(getPosTemp)+"px");
+            var returnID = addAPointer($(hexCode).val(),String(getPosTemp)+"px");
             $(".gradientPointer").removeClass("selected");
             $("#"+returnID).addClass("selected");
             $("#"+returnID).draggable({
@@ -130,14 +134,23 @@ $(document).ready(function() {
     //SideBar
     $(".toggle-btn").click(function(){
         $("#sidebar").toggleClass("active");
+        updateSideBar();
+    })
+
+    $(sidebarList).on("click",".itemDelete",function() {
+        var sId = $(this).parent().parent().attr("id");
+        sId = sId.substring(0,sId.length-3);
+        gradientChanger.deletePointer(sId);
+        updateGradient();
+        updateSideBar();
     })
     
 
-})
+});
 
 //Main function
 function start() {
-    addAPointer("#FFFFFF", "10px");
+    addAPointer("#FFFFFF", "2px");
     addAPointer("#000000", "320px");
     $(hexCode).val("#000000")
     updateGradient();
@@ -151,9 +164,8 @@ function updateGradient() {
         return lgTemp;
     });
 
-    $(".gradientViewer").css("background",lgTemp);
-
-    
+    $(".gradientViewer").css("background",lgTemp);   
+    updateSideBar();
 }
 
 function updateAll(r,g,b) {
@@ -167,6 +179,40 @@ function updateMainChoose() {
     picker.updateColor($(rInput).val(),$(gInput).val(),$(bInput).val());
  }
 
+function updateSideBar() {
+    var listPointers = gradientChanger.getPointers();
+    $(sidebarList).html("")
+    for (var i = 0; i < listPointers.length; i++) {
+        var itemDiv = document.createElement("div");
+        itemDiv.setAttribute("class","item");
+        itemDiv.setAttribute("id",listPointers[i].getId()+"div");
+
+        var itemColor = document.createElement("div");
+        itemColor.setAttribute("class","itemColor");
+        itemColor.style.backgroundColor = listPointers[i].getColor();
+
+        var itemDetails = document.createElement("div");
+        itemDetails.setAttribute("class","itemDetails");
+        
+        var itemHex = document.createElement("span");
+        itemHex.setAttribute("class","itemHex");
+        var itemHexVal = document.createTextNode(listPointers[i].getColor());
+        itemHex.append(itemHexVal);
+
+        var itemDelete = document.createElement("button");
+        itemDelete.setAttribute("class","itemDelete");
+        var itemDeleteVal = document.createTextNode("Delete");
+        itemDelete.append(itemDeleteVal);
+
+        itemDetails.append(itemHex);
+        itemDetails.append(itemDelete);
+
+        itemDiv.append(itemColor);
+        itemDiv.append(itemDetails);
+
+        $(sidebarList).append(itemDiv);
+    }
+}
 
 //Utilities Functions
 function findPos(obj) {
@@ -182,7 +228,9 @@ function findPos(obj) {
 }
 
 function addAPointer(color,pos) {
-    gradientChanger.addPointer(color,pos);
+     var id = gradientChanger.addPointer(color,pos);
+    updateSideBar();
+    return id;
 }
 
 function isValid(hexCode) {
