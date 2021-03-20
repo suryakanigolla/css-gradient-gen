@@ -93,16 +93,11 @@
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<div class="github-profile-badge" data-user="suryakanigolla"></div>
-<script src="https://cdn.jsdelivr.net/gh/Rapsssito/github-profile-badge@latest/src/widget.min.js"></script>
-
-
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [jQueryUI](https://jqueryui.com/)
 * [MicroModal](https://micromodal.now.sh/)
-* [Github Profile Badge](https://github.com/Rapsssito/github-profile-badge)
 
 
 
